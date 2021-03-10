@@ -28,7 +28,7 @@ const aLargerThanB = (a, b) => {
     }
 }
 
-const aLargerThanB2 = (a, b) => a > b ? true
+const aLargerThanB2 = (a, b) => a > b ? "a is larger" : "a is not larger";
 
 
 class Square {
