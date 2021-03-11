@@ -71,6 +71,11 @@ myNewMap(numbers, function(data){ console.log(data) });
 
 console.log(numbers.filter(number => number === 88));
 
+// numbers.forEach
+// numbers.sort
+// numbers.reduce
+// numbers.
+
 // have an array
 // want a modifed new array
 // of the same length
