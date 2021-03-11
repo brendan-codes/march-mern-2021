@@ -18,12 +18,20 @@
 
 let Partition = (arr, left = 0, right = arr.length - 2) => {
     let pivot = arr.length - 1 //start at the end
-    while (left < right) {
-        if (arr[left] > arr[pivot]) {
-
-        }
+    while (left < right){
+        while (arr[left] < arr[pivot]) {
+                left++;
+            }
+        while (arr[right] > arr[pivot]) {
+            right--;
+            }
+        [arr[right], arr[left]] = [arr[left], arr[right]];  
     }
-    console.log(arr);
-}()
-
-[18, 41, 65, 16, 56, 54, 65]
+    [arr[left], arr[pivot]] = [arr[pivot], arr[left]];
+    return left;
+}
+    // if (left == right){
+    //     arr[left] with arr[pivot]
+    // }
+    console.log(arr)
+[18, 41, 65, 16, 75, 54, 63]

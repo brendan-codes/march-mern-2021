@@ -46,10 +46,10 @@ let PartitionLomuto = (arr, left = 0, right = arr.length - 1) => {
 }
 
 PartitionLomuto([4, 5, 2, 9, 11, 12, 99, 200])
-//               l                    r
-//                                         p
-//                               i
-//                                         j
+    //               l                    r
+    //                                         p
+    //                               i
+    //                                         j
 
 function partitionHoare(arr, left, right) {
     if (left === undefined) {

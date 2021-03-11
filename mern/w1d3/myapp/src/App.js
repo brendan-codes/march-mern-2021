@@ -1,11 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import './compoments/File';
+import List from "./components/List";
 
 function App() {
   return (
     <div className="App">
-
+      <List />
+      <List />
+      <List />
+      <List />
     </div>
   );
 }
