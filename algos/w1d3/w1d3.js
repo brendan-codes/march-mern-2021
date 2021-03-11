@@ -20,7 +20,16 @@
 
 
 // [88, 22, 44, 12, 99, 111, 9, 15, 49];
+// 88, 22, 44, 12      99, 111, 9, 15, 49
+// 88, 22   44, 12     99, 111   9, 15, 49
+// 88  22   44  12     99  111   9   15, 49
+// 88  22   44  12     99  111   9
+//                                     15 49
+// [22, 88] [12, 44]  [99, 111]
+// [12, 22, 44, 88]
 
+
+//              88
 function mergeSort(arr) {
     // return arrays of single values
     if (arr.length < 2) {
@@ -33,7 +42,7 @@ function mergeSort(arr) {
     const right = arr.slice(middle);
 
     // mergeSortedArray called on the result of mergeSort left and right
-    return mergeSortedArrays(mergeSort(left), mergeSort(right));
+    return mergeSortedArrays(mergeSort(left), mergeSort(right)); // A function call is equal to what that function returns
 }
 
 // return a new sorted array with all of the values of arr1 and arr2

@@ -21,9 +21,45 @@
 
 // [88, 22, 44, 12, 99, 111, 9, 15, 49];
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
+    if (arr.length == 1) {
+        return arr
+    }
+    arr1 = mergeSort(arr.slice(0,Math.floor(arr.length/2)))
+    arr2 = mergeSort(arr.slice(Math.floor(arr.length/2, arr.length )))
+    return mergeSortedArrays(arr1,arr2)
+}
 
-function mergeSortedArrays(arr1, arr2) {}
+
+function mergeSortedArrays(arr1, arr2) {
+    let i = 0
+    let j = 0
+    let newarr = []
+    while(i<arr1.length && j < arr2.length){
+        if (arr1[i]>arr2[j]) {
+            newarr.push(arr2[j])
+            j++;
+        }
+        else{
+            newarr.push(arr1[i])
+            i++;
+        }
+    }
+    if(i<arr1.length){
+        for(i; i<arr1.length; i++){
+            newarr.push(arr1[i])
+        }
+    }
+    else{
+        for(j; j<arr2.length; j++) {
+            newarr.push(arr2[j])
+        }
+    }
+    return newarr;
+}
+
+console.log("hi")
+console.log(mergeSort([88, 22, 44, 12, 99, 111, 9, 15, 49]))
 
 // //steps:
 //     1. create a merge function to merge two already sorted arrays into a single sorted array

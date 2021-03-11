@@ -21,10 +21,21 @@
 
 // [88, 22, 44, 12, 99, 111, 9, 15, 49];
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
 
-function mergeSortedArrays(arr1, arr2) {}
+}
 
+function mergeSortedArrays(arr1, arr2) {
+    let sort = [];
+    while (arr1.length && arr2.length) {
+        if (arr1[0] < arr2[0]) {
+            sort.push(arr1.shift());
+        } else {
+            sort.push(arr2.shift());
+        }
+    }
+    return sort.concat(arr1.slice().concat(arr2.slice()));
+}
 // //steps:
 //     1. create a merge function to merge two already sorted arrays into a single sorted array
 //       - you do NOT need to work in place, ok to use a new array

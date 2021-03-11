@@ -23,7 +23,32 @@
 
 function mergeSort(arr) {}
 
-function mergeSortedArrays(arr1, arr2) {}
+function mergeSortedArrays(arr1, arr2) {
+    let i = 0;
+    let j = 0;
+    emptyArr = [];
+    while ( i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            emptyArr.push(arr1[i]);
+            i++;
+        } else {
+            emptyArr.push(arr2[j]);
+            j++;
+        }
+    }
+    if ( i < arr1.length ) {
+        returnArr = emptyArr.concat(arr1.slice(i,arr1.length))
+    }
+    if ( j < arr2.length ) {
+        returnArr = emptyArr.concat(arr2.slice(j,arr2.length))
+    }
+    return returnArr;
+}
+
+let array1 = [6,7,8,9];
+let array2 = [1,2,3,4,5];
+
+console.log(mergeSortedArrays(array1,array2));
 
 // //steps:
 //     1. create a merge function to merge two already sorted arrays into a single sorted array
