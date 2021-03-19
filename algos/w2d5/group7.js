@@ -1,0 +1,46 @@
+/* *1189. Maximum Number of Balloons
+ * Given a string text you want to use the characters of
+ * text to form as many instances of the word "balloon" as possible.
+ *
+ * You can use each character in text at most once.
+ * Return the maximum number of instances that can be formed.
+ *
+ * Example 1:
+ * Input: text = "nlaebolko"
+ * Output: 1
+ *
+ * Example 2:
+ * Input: text = "loonbalxballpoon"
+ * Output: 2
+ *
+ * Example 3:
+ * Input: text = "leetcode"
+ * Output: 0
+ * @param {string} text
+ * @return {number}
+ */
+
+
+const Balloons = (text, word = "balloon") => {
+    var wordBank = {};
+    var textBank = {};
+    var output = 0;
+    for(i=0; i<word.length;i++) {
+        if(wordBank.hasOwnProperty(word[i])) {wordBank[word[i]] += 1}
+        else {wordBank[word[i]] = 1;}
+    }
+    for(i=0; i<text.length;i++) {
+        if(wordBank.hasOwnProperty(text[i])) {
+            if(textBank.hasOwnProperty(text[i])) {textBank[text[i]] += 1}
+            else {textBank[text[i]] = 1;}
+            if(Math.floor(textBank[text[i]] / wordBank[text[i]]) > output) {
+                output = Math.floor(textBank[text[i]] / wordBank[text[i]])
+            }
+        }
+    }
+    console.log(wordBank, textBank);
+};
+
+
+console.log(Balloons("loonbalxballpoon", "balloon"));
+// => 2
