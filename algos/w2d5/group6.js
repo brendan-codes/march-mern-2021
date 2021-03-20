@@ -21,35 +21,36 @@
  */
 
 const Balloons = (text, word = "balloon") => {
+	if (text.length < word.length) return 0;
 	//loop through input word and count the letters into a separate dictionary keyed on the letters
-	const wordLetterCount = {};
-	for(let i = 0; i < word.length; i++) {
-		if (wordLetterCount.hasOwnProperty(word[i]))
-			wordLetterCount[word[i]] += 1;
-		else
-			wordLetterCount[word[i]] = 1;
+	const wordLetterCounts = {};
+	for (let i = 0; i < word.length; i++) {
+		wordLetterCounts.hasOwnProperty(word[i])
+			? wordLetterCounts[word[i]]++
+			: (wordLetterCounts[word[i]] = 1);
 	}
 	//loop through the input text and count the letters (from the input word) when they appear in the text
-	const textLetterCount = {};
-	for(let i =0; i < text.length; i++) {
-		if(wordLetterCount.hasOwnProperty(text[i])) {
-			if(textLetterCount.hasOwnProperty([text[i]]))
-				textLetterCount[text[i]] += 1;
-			else
-				textLetterCount[text[i]] = 1;
+	const textLetterCounts = {};
+	for (let i = 0; i < text.length; i++) {
+		if (wordLetterCounts.hasOwnProperty(text[i])) {
+			textLetterCounts.hasOwnProperty([text[i]])
+				? textLetterCounts[text[i]]++
+				: (textLetterCounts[text[i]] = 1);
 		}
 	}
 	//examine the letter counts to see how many times you can make the word
 	let wordCount = Infinity;
-	for (const key in textLetterCount) {
-		const x = Math.floor(textLetterCount[key] / wordLetterCount[key]);
-		if(x < wordCount) wordCount = x;
+	for (const key in textLetterCounts) {
+		const temp = Math.floor(textLetterCounts[key] / wordLetterCounts[key]);
+		if (temp < wordCount) wordCount = temp;
 	}
-    return wordCount;
+	return wordCount;
 };
 
 
-console.log(Balloons("loonbalxballpoon", "balloon"));
 console.log(Balloons("nlaebolko", "balloon"));
-console.log(Balloons("leetcode", "balloon"));
+// => 1
+console.log(Balloons("loonbalxballpoon", "balloon"));
 // => 2
+console.log(Balloons("leetcode", "balloon"));
+// => 0

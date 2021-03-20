@@ -35,11 +35,17 @@ const Balloons = (text, word = "balloon") => {
         }
         else wordLetters[word[i]] = 1;
     }
+    //{a: 2, b: 3, l: 4, ...}
     for (let j = 0; j < text.length; j++) {
         if (textLetters.hasOwnProperty(text[j])) {
             textLetters[text[j]] = textLetters[text[j]]+1;
         }
-        else textLetters[text[j]] = 1;
+        else {
+            textLetters[text[j]] = 1;
+        }
+    }
+    if (textLetters.hasOwnProperty(word[0]) && wordLetters.hasOwnProperty(word[0])) {
+        min = Math.floor(textLetters[word[0]] / wordLetters[word[0]]);
     }
     for (let k = 0; k < word.length; k++) {
         let minWords;
@@ -49,7 +55,9 @@ const Balloons = (text, word = "balloon") => {
                 min = minWords;
             }
         }
-        else return 0;
+        else {
+            return 0;
+        }
     }
     return min;
 };
@@ -65,14 +73,14 @@ console.log(Balloons("loonbalxballpoon", "balloon"));
 // For var i of argument, increment
 // Find maximum, can use Math.floor to find, need to find val/2 for l and o (spelling of balloon)
 
-const Ballons = function(text) {
-    const map = { b:0, a:0, l:0, o:0, n:0,};
-    for (let i of text) {
-        obj[i]++;
-    }
-    return Math.floor(
-        obj.b, obj.a, obj.l/2, obj.o/2, obj.n);
+// const Ballons = function(text) {
+//     const map = { b:0, a:0, l:0, o:0, n:0,};
+//     for (let i of text) {
+//         obj[i]++;
+//     }
+//     return Math.floor(
+//         obj.b, obj.a, obj.l/2, obj.o/2, obj.n);
 
-};
+// };
 
-console.log(ballons("loonbalxballpoon"))
+// console.log(ballons("loonbalxballpoon"))
