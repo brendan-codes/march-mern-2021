@@ -1,8 +1,5 @@
 
-
-
 const Edit = (props) => {
-
 
     return (
         <>

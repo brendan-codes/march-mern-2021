@@ -2,6 +2,8 @@ const mongoose = require("mongoose"); // require mongoose
 const Note = mongoose.model("Note"); // initalize our Model
 
 
+
+
 // export object literal with methods taking
 // req and res. all responses are in json
 module.exports = {

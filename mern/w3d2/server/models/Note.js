@@ -10,4 +10,6 @@ const NoteSchema = new mongoose.Schema({
 }, {timestamps: true}); // you can pass an object at the end of schema creation
 
 
+
+
 mongoose.model("Note", NoteSchema); // finally initalize it for the first time
