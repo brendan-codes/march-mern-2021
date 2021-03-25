@@ -14,3 +14,4 @@ mongoose.connect(`mongodb://localhost/${db}`, {
 // finally require ALL of our models
 // if a new model is created, add it here
 require("../models/Note");
+require("../models/Todo");

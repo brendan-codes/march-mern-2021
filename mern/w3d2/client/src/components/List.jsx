@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const List = ({notes, deleteNote}) => {
+const List = ({todos, deleteTodo}) => {
 
     const axiosDelete = (id) => {
-        axios.delete(`http://localhost:8000/notes/${id}`)
+        axios.delete(`http://localhost:8000/todo/${id}`)
             .then(response => {
                 console.log(response)
-                deleteNote(id);
+                deleteTodo(id);
             })
             .catch(err => {console.log(err)})
     }
@@ -14,11 +14,13 @@ const List = ({notes, deleteNote}) => {
     return (
         <>
             {
-                notes.map((note, idx) =>
+                todos.map((todo, idx) =>
                     <div key={idx}>
-                        <p>Content: {note.content}</p>
-                        <p>Date: {Date(note.createdAt)}</p>
-                        <p><button onClick={() => axiosDelete(note._id)}>Delete me!</button></p>
+                        <p>Title: {todo.title}</p>
+                        <p>description: {todo.description}</p>
+                        <p>Completed: <input type="checkbox" checked={todo.completed}></input></p>
+                        <p>Date: {Date(todo.createdAt)}</p>
+                        <p><button onClick={() => axiosDelete(todo._id)}>Delete me!</button></p>
                         <hr />
                     </div>
                 )

@@ -9,10 +9,11 @@ import Create from './components/Create';
 function App() {
 
   const [notes, setNotes] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/notes")
-      .then(response => setNotes(response.data))
+    axios.get("http://localhost:8000/todos")
+      .then(response => setTodos(response.data))
       .catch(err => console.log(err))
   }, []);
 
@@ -21,6 +22,14 @@ function App() {
   }
 
   const deleteNote = (id) => {
+    setNotes(notes.filter(note => note._id !== id));
+  }
+
+  const addTodo = (todo) => {
+    setTodos([...todos, todo]);
+  }
+
+  const deleteTodo = (id) => {
     setNotes(notes.filter(note => note._id !== id));
   }
 
@@ -34,8 +43,8 @@ function App() {
       </div>
       <hr/>
       <Router>
-        <List path="/" notes={notes} deleteNote={deleteNote} />
-        <Create path="/new" addNote={addNote}/>
+        <List path="/" todos={todos} deleteTodo={deleteTodo} />
+        <Create path="/new" addTodo={addTodo}/>
       </Router>
     </div>
   );
